@@ -29,22 +29,6 @@ color: red;
 
 
 
-<?php
-$connection = mysqli_connect('localhost','root',"",'todo');
-if (isset($_POST['delete'])){
-  //print_r($_POST);
-  $index2delete=$_POST["index"];
-  //print $index2delete;
-  $query = "DELETE FROM `workers` WHERE `workers`.`id` = $index2delete";
-  $delete_result = mysqli_query($connection,$query);
-  if ($delete_result){
-    print "<h2>Worker deleted</h2>";
-  }else {
-    print mysqli_error($connection);
-  }
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +42,28 @@ if (isset($_POST['delete'])){
 
 <body>
 <h1>All workers</h1>
+
+<?php
+$connection = mysqli_connect('localhost','root',"",'todo');
+if (isset($_POST['delete'])){
+  //print_r($_POST);
+  $index2delete=$_POST["index"];
+  //print $index2delete;
+  $query = "DELETE FROM `workers` WHERE `workers`.`id` = $index2delete";
+  $delete_result = mysqli_query($connection,$query);
+  if ($delete_result){
+    print "<h2>Goodbye worker</h2>";
+  }else {
+    print mysqli_error($connection);
+  }
+}
+
+?>
+
+@if ($add_worker)
+<h2 style="color:red ; text-align:center">Hello new worker</h2>
+@endif
+
 @include("gd.form.newworker")
 
 <form  method="POST">

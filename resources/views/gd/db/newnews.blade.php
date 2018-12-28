@@ -6,26 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+
 </head>
 <body>
 @include("gd.nav.nav")
-<?php
-
-$connection = mysqli_connect('localhost','root',"",'todo');
-if (isset($_POST['delete'])){
-  //print_r($_POST);
-  $index2delete=$_POST["index"];
-  //print $index2delete;
-  $query = "DELETE FROM `news` WHERE `news`.`id` = $index2delete";
-  $delete_result = mysqli_query($connection,$query);
-  if ($delete_result){
-    print "<h2> Question deleted</h2>";
-  }else {
-    print mysqli_error($connection);
-  }
-}
-
-?>
 
 <h4 style="text-align:center">This page is only for admin to add news</h4>
 
@@ -38,8 +22,38 @@ if (isset($_POST['delete'])){
    <br>
 
 
+   @if($add_news)
+<h2 style="color:red ; text-align:center">Article added</h2>
+@endif
 
+<style>
+h1 {
+text-align :center}
+h2 {
+text-align :center;
+color: red;
+}
+
+</style>
+
+<?php
+
+$connection = mysqli_connect('localhost','root',"",'todo');
+if (isset($_POST['delete'])){
+  //print_r($_POST);
+  $index2delete=$_POST["index"];
+  //print $index2delete;
+  $query = "DELETE FROM `news` WHERE `news`.`id` = $index2delete";
+  $delete_result = mysqli_query($connection,$query);
+  if ($delete_result){
+    print "<h2>Article deleted</h2>";
+  }else {
+    print mysqli_error($connection);
+  }
+}
+?>
 <h4> Add news</h4>
+
 <form method="POST"> 
   @csrf
       <input  type="text" name="title" placeholder="title" require/>
@@ -101,7 +115,6 @@ if (isset($_POST['delete'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
-@include("gd.buttons.up")
 
 @include("gd.nav.bottom")
 </body>

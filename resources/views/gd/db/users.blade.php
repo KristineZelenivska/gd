@@ -30,7 +30,7 @@ color: red;
   display:block;" href="/db/newnews">News</a>
  <br>
 
-<h1>All users</h1>
+<h1>All questions</h1>
 <?php
 
 $connection = mysqli_connect('localhost','root',"",'todo');

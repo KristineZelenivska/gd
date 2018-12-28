@@ -65,8 +65,7 @@ Route::post('/contact', function () {
 });
 
 Route::get('/db/users', function () {
-    return view('gd/db/users', [
-        ]);
+    return view('gd/db/users');
 
 });
 
@@ -78,14 +77,18 @@ Route::delete('db/users', function () {
 });
 
 Route::get('/db/workers', function () {
-    return view('gd/db/workers');
+    return view('gd/db/workers',[
+        'add_worker'=>false,
+    ]);
 });
 
 Route::delete('db/workers', function () {
     $deleteitem = new \App\Workers;
     $deleteitem -> id = \Request('id');
     $deleteitem -> delete();
-    return view('gd/db/workers');
+    return view('gd/db/workers',[
+        'add_worker'=>false,
+    ]);
 });
 
 Route::post('/db/workers', function () {
@@ -94,11 +97,15 @@ Route::post('/db/workers', function () {
     $item -> position = \Request('position');
     $item -> contact = \Request('contact');
     $item -> save();
-    return view('gd/db/workers');
+    return view('gd/db/workers',[
+        'add_worker'=> true,
+    ]);
 });
 
 Route::get('/db/newnews', function () {
-    return view('gd/db/newnews');
+    return view('gd/db/newnews',[
+        'add_news'=>false,
+    ]);
 });
 
 Route::post('/db/newnews', function () {
@@ -106,12 +113,16 @@ Route::post('/db/newnews', function () {
     $item -> title = \Request('title');
     $item -> content = \Request('content');
     $item -> save();
-    return view('gd/db/newnews');
+    return view('gd/db/newnews',[
+        'add_news'=>true,
+    ]);
 });
 
 Route::delete('db/newnews', function () {
     $deleteitem = new \App\News;
     $deleteitem -> id = \Request('id');
     $deleteitem -> delete();
-    return view('gd/db/newnews');
+    return view('gd/db/newnews',[
+        'add_news'=>false,
+    ]);
 });
