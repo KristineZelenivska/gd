@@ -1,0 +1,39 @@
+body {
+    color: #666;
+    background: #f5f5f5;
+    font-family: "Varela Round", sans-serif;
+    font-size: 12px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.app--header {
+    margin: 40px 0;
+}
+
+.app--header .btn {
+    margin: 20px 0;
+}
+
+button.close {
+    margin: -10px;
+}
+button.close a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.doneTask {
+    float: right;
+}
+
+.doneTask:hover {
+    text-decoration: underline;
+}
+
+.card-body.is-done .blockquote {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
